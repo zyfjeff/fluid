@@ -37,8 +37,7 @@ func (j *CacheFSEngine) queryCacheStatus() (states cacheStates, err error) {
 	}
 
 	var pods []v1.Pod
-	// enterprise edition use cache of workers which form a cache group, while community edition use cache of fuse pod whose cache if no-sharing
-	containerName := common.CacheFSFuseContainer
+	containerName := common.CacheFSWorkerContainer
 	stsName := j.getWorkerName()
 	pods, err = j.GetRunningPodsOfStatefulSet(stsName, j.namespace)
 	if err != nil || len(pods) == 0 {

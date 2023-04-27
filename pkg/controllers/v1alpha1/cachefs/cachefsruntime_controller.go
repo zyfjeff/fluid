@@ -51,8 +51,7 @@ var _ controllers.RuntimeReconcilerInterface = (*CacheFSRuntimeReconciler)(nil)
 type CacheFSRuntimeReconciler struct {
 	engines map[string]base.Engine
 	mutex   *sync.Mutex
-	client.Client
-	Scheme *runtime.Scheme
+	Scheme  *runtime.Scheme
 	*controllers.RuntimeReconciler
 }
 
@@ -70,10 +69,6 @@ func NewRuntimeReconciler(client client.Client,
 	return r
 }
 
-//+kubebuilder:rbac:groups=data.fluid.io,resources=cachefsruntimes,verbs=get;list;watch;create;update;patch;delete
-//+kubebuilder:rbac:groups=data.fluid.io,resources=cachefsruntimes/status,verbs=get;update;patch
-//+kubebuilder:rbac:groups=data.fluid.io,resources=cachefsruntimes/finalizers,verbs=update
-
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
 // move the current state of the cluster closer to the desired state.
 // TODO(user): Modify the Reconcile function to compare the state specified by
@@ -83,6 +78,11 @@ func NewRuntimeReconciler(client client.Client,
 //
 // For more details, check Reconcile and its Result here:
 // - https://pkg.go.dev/sigs.k8s.io/controller-runtime@v0.14.1/pkg/reconcile
+
+//+kubebuilder:rbac:groups=data.fluid.io,resources=cachefsruntimes,verbs=get;list;watch;create;update;patch;delete
+//+kubebuilder:rbac:groups=data.fluid.io,resources=cachefsruntimes/status,verbs=get;update;patch
+//+kubebuilder:rbac:groups=data.fluid.io,resources=cachefsruntimes/finalizers,verbs=update
+
 func (r *CacheFSRuntimeReconciler) Reconcile(context context.Context, req ctrl.Request) (ctrl.Result, error) {
 
 	defer utils.TimeTrack(time.Now(), "Reconcile", "request", req)

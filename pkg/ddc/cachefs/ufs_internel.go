@@ -18,7 +18,7 @@ package cachefs
 
 import (
 	"github.com/fluid-cloudnative/fluid/pkg/common"
-	"github.com/fluid-cloudnative/fluid/pkg/ddc/juicefs/operations"
+	"github.com/fluid-cloudnative/fluid/pkg/ddc/cachefs/operations"
 )
 
 func (j *CacheFSEngine) totalStorageBytesInternal() (total int64, err error) {
@@ -27,7 +27,7 @@ func (j *CacheFSEngine) totalStorageBytesInternal() (total int64, err error) {
 	if err != nil || len(pods) == 0 {
 		return
 	}
-	fileUtils := operations.NewJuiceFileUtils(pods[0].Name, common.JuiceFSWorkerContainer, j.namespace, j.Log)
+	fileUtils := operations.NewCacheFSFileUtils(pods[0].Name, common.CacheFSWorkerContainer, j.namespace, j.Log)
 	total, err = fileUtils.GetUsedSpace(j.getMountPoint())
 	if err != nil {
 		return
@@ -42,7 +42,7 @@ func (j *CacheFSEngine) totalFileNumsInternal() (fileCount int64, err error) {
 	if err != nil || len(pods) == 0 {
 		return
 	}
-	fileUtils := operations.NewJuiceFileUtils(pods[0].Name, common.JuiceFSWorkerContainer, j.namespace, j.Log)
+	fileUtils := operations.NewCacheFSFileUtils(pods[0].Name, common.CacheFSWorkerContainer, j.namespace, j.Log)
 	fileCount, err = fileUtils.GetFileCount(j.getMountPoint())
 	if err != nil {
 		return
@@ -57,7 +57,7 @@ func (j *CacheFSEngine) usedSpaceInternal() (usedSpace int64, err error) {
 	if err != nil || len(pods) == 0 {
 		return
 	}
-	fileUtils := operations.NewJuiceFileUtils(pods[0].Name, common.JuiceFSWorkerContainer, j.namespace, j.Log)
+	fileUtils := operations.NewCacheFSFileUtils(pods[0].Name, common.CacheFSWorkerContainer, j.namespace, j.Log)
 	usedSpace, err = fileUtils.GetUsedSpace(j.getMountPoint())
 	if err != nil {
 		return

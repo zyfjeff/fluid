@@ -1,0 +1,8 @@
+name: cachefs
+apiVersion: v1
+description: FileSystem aimed for data analytics and machine learning in any cloud.
+version: 0.2.13
+appVersion: v1.0.0
+maintainers:
+- name: tianqian.zyf
+  email: tianqian.zyf@alibaba-inc.com

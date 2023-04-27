@@ -232,9 +232,9 @@ func (j *CacheFSEngine) GetValuesConfigMap() (cm *corev1.ConfigMap, err error) {
 func getMountRoot() (path string) {
 	path, err := utils.GetMountRoot()
 	if err != nil {
-		path = "/" + common.JuiceFSRuntime
+		path = "/" + common.CacheFSRuntime
 	} else {
-		path = path + "/" + common.JuiceFSRuntime
+		path = path + "/" + common.CacheFSRuntime
 	}
 	return
 }

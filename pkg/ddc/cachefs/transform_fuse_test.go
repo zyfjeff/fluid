@@ -587,7 +587,7 @@ func TestCacheFSEngine_genFormatCmd(t *testing.T) {
 					},
 				},
 			},
-			wantFormatCmd: "/usr/local/bin/cachefs format --access-key=${ACCESS_KEY} --secret-key=${SECRET_KEY} --storage=minio --bucket=http://127.0.0.1:9000/minio/test redis://127.0.0.1:6379 test",
+			wantFormatCmd: "/usr/local/bin/juicefs format --access-key=${ACCESS_KEY} --secret-key=${SECRET_KEY} --storage=minio --bucket=http://127.0.0.1:9000/minio/test redis://127.0.0.1:6379 test",
 		},
 	}
 	for _, tt := range tests {

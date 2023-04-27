@@ -34,7 +34,7 @@ import (
 // setup fuse
 func (j *CacheFSEngine) setupMasterInternal() (err error) {
 	var (
-		chartName = utils.GetChartsDirectory() + "/" + common.JuiceFSChart
+		chartName = utils.GetChartsDirectory() + "/" + common.CacheFSChart
 	)
 
 	runtime, err := j.getRuntime()

@@ -17,11 +17,11 @@ limitations under the License.
 package cachefs
 
 const (
-	BlockCacheBytes     = "blockcache.bytes"
-	BlockCacheHits      = "blockcache.hits"
-	BlockCacheMiss      = "blockcache.miss"
-	BlockCacheHitBytes  = "blockcache.hitBytes"
-	BlockCacheMissBytes = "blockcache.missBytes"
+	BlockCacheBytes     = "juicefs_blockcache.bytes"
+	BlockCacheHits      = "juicefs_blockcache.hits"
+	BlockCacheMiss      = "juicefs_blockcache.miss"
+	BlockCacheHitBytes  = "juicefs_blockcache.hitBytes"
+	BlockCacheMissBytes = "juicefs_blockcache.missBytes"
 
 	workerPodRole      = "cachefs-worker"
 	DefaultMetricsPort = 9567

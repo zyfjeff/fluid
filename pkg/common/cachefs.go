@@ -20,12 +20,13 @@ package common
 const (
 	CacheFSRuntime         = "cachefs"
 	CacheFSMountType       = "fuse.cachefs-fuse"
+	CacheFSChart           = CacheFSRuntime
 	CacheFSFuseContainer   = "cachefs-fuse"
 	CacheFSDefaultCacheDir = "/var/jfsCache"
 	CacheFSFuseImageEnv    = "CACHEFS_FUSE_IMAGE_ENV"
 	CacheFSDefaultImage    = "registry.cn-shanghai.aliyuncs.com/cachefs/cachefs-fuse"
 	CacheFSDefaultImageTag = "1.0.0"
 	CacheFSWorkerContainer = "cachefs-worker"
-	CacheFSCliPath         = "/usr/local/bin/cachefs"
-	CacheFSMountPath       = "/bin/mount.cachefs"
+	CacheFSCliPath         = "/usr/local/bin/juicefs"
+	CacheFSMountPath       = "/bin/mount.juicefs"
 )
