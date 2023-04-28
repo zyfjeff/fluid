@@ -156,26 +156,16 @@ func (j *CacheFSEngine) parseRuntimeImage(image string, tag string, imagePullPol
 	}
 
 	if len(image) == 0 {
-		image = docker.GetImageRepoFromEnv(common.JuiceFSFuseImageEnv)
+		image = docker.GetImageRepoFromEnv(common.CacheFSWorkerImageEnv)
 		if len(image) == 0 {
-			runtimeImageInfo := strings.Split(common.DefaultJuiceFSRuntimeImage, ":")
-			if len(runtimeImageInfo) < 1 {
-				panic("invalid default juicefs runtime image!")
-			} else {
-				image = runtimeImageInfo[0]
-			}
+			image = common.CacheFSWorkerDefaultImage
 		}
 	}
 
 	if len(tag) == 0 {
-		tag = docker.GetImageTagFromEnv(common.JuiceFSFuseImageEnv)
+		tag = docker.GetImageTagFromEnv(common.CacheFSWorkerImageEnv)
 		if len(tag) == 0 {
-			runtimeImageInfo := strings.Split(common.DefaultJuiceFSRuntimeImage, ":")
-			if len(runtimeImageInfo) < 2 {
-				panic("invalid default juicefs runtime image!")
-			} else {
-				tag = runtimeImageInfo[1]
-			}
+			tag = common.CacheFSWorkerDefaultImageTag
 		}
 	}
 
@@ -190,14 +180,14 @@ func (j *CacheFSEngine) parseFuseImage(image string, tag string, imagePullPolicy
 	if len(image) == 0 {
 		image = docker.GetImageRepoFromEnv(common.CacheFSFuseImageEnv)
 		if len(image) == 0 {
-			image = common.CacheFSDefaultImage
+			image = common.CacheFSFuseDefaultImage
 		}
 	}
 
 	if len(tag) == 0 {
 		tag = docker.GetImageTagFromEnv(common.CacheFSFuseImageEnv)
 		if len(tag) == 0 {
-			tag = common.CacheFSDefaultImageTag
+			tag = common.CacheFSFuseDefaultImageTag
 		}
 	}
 

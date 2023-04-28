@@ -53,7 +53,7 @@ func (j *CacheFSEngine) CreateDataLoadJob(ctx cruntime.ReconcileRequestContext, 
 			log.Error(err, "failed to generate dataload chart's value file")
 			return err
 		}
-		chartName := utils.GetChartsDirectory() + "/" + cdataload.DataloadChart + "/" + common.JuiceFSRuntime
+		chartName := utils.GetChartsDirectory() + "/" + cdataload.DataloadChart + "/" + common.CacheFSRuntime
 		err = helm.InstallRelease(releaseName, targetDataload.Namespace, valueFileName, chartName)
 		if err != nil {
 			log.Error(err, "failed to install dataload chart")
@@ -74,14 +74,14 @@ func (j *CacheFSEngine) generateDataLoadValueFile(r cruntime.ReconcileRequestCon
 	}
 	j.Log.Info("target dataset", "dataset", targetDataset)
 
-	imageName, imageTag := docker.GetWorkerImage(r.Client, dataload.Spec.Dataset.Name, "juicefs", dataload.Spec.Dataset.Namespace)
+	imageName, imageTag := docker.GetWorkerImage(r.Client, dataload.Spec.Dataset.Name, "cachefs", dataload.Spec.Dataset.Namespace)
 
 	if len(imageName) == 0 {
-		imageName = common.CacheFSDefaultImage
+		imageName = common.CacheFSWorkerDefaultImage
 	}
 
 	if len(imageTag) == 0 {
-		imageTag = common.CacheFSDefaultImageTag
+		imageTag = common.CacheFSWorkerDefaultImageTag
 	}
 
 	cacheinfo, err := GetCacheInfoFromConfigmap(j.Client, dataload.Spec.Dataset.Name, dataload.Spec.Dataset.Namespace)

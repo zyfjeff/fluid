@@ -18,15 +18,18 @@ package common
 
 // Runtime for CacheFS
 const (
-	CacheFSRuntime         = "cachefs"
-	CacheFSMountType       = "fuse.cachefs-fuse"
-	CacheFSChart           = CacheFSRuntime
-	CacheFSFuseContainer   = "cachefs-fuse"
-	CacheFSDefaultCacheDir = "/var/jfsCache"
-	CacheFSFuseImageEnv    = "CACHEFS_FUSE_IMAGE_ENV"
-	CacheFSDefaultImage    = "registry.cn-shanghai.aliyuncs.com/cachefs/cachefs-fuse"
-	CacheFSDefaultImageTag = "1.0.0"
-	CacheFSWorkerContainer = "cachefs-worker"
-	CacheFSCliPath         = "/usr/local/bin/juicefs"
-	CacheFSMountPath       = "/bin/mount.juicefs"
+	CacheFSRuntime               = "cachefs"
+	CacheFSMountType             = "JuiceFS"
+	CacheFSChart                 = CacheFSRuntime
+	CacheFSFuseContainer         = "cachefs-fuse"
+	CacheFSDefaultCacheDir       = "/var/jfsCache"
+	CacheFSFuseImageEnv          = "CACHEFS_FUSE_IMAGE_ENV"
+	CacheFSWorkerImageEnv        = "CACHEFS_WORKER_IMAGE_ENV"
+	CacheFSFuseDefaultImage      = "juicedata/juicefs-fuse"
+	CacheFSFuseDefaultImageTag   = "v1.0.0"
+	CacheFSWorkerDefaultImage    = "juicedata/juicefs-fuse"
+	CacheFSWorkerDefaultImageTag = "v1.0.0"
+	CacheFSWorkerContainer       = "cachefs-worker"
+	CacheFSCliPath               = "/usr/local/bin/juicefs"
+	CacheFSMountPath             = "/bin/mount.juicefs"
 )

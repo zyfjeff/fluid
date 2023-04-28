@@ -26,7 +26,7 @@ import (
 
 	"github.com/fluid-cloudnative/fluid/pkg/common"
 	"github.com/fluid-cloudnative/fluid/pkg/ddc/base"
-	"github.com/fluid-cloudnative/fluid/pkg/ddc/juicefs/operations"
+	"github.com/fluid-cloudnative/fluid/pkg/ddc/cachefs/operations"
 	"github.com/fluid-cloudnative/fluid/pkg/utils"
 )
 
@@ -171,10 +171,10 @@ func (j *CacheFSEngine) syncMetadataInternal() (err error) {
 				return
 			}
 			for _, pod := range pods {
-				fileUtils := operations.NewJuiceFileUtils(pod.Name, common.JuiceFSWorkerContainer, j.namespace, j.Log)
+				fileUtils := operations.NewCacheFSFileUtils(pod.Name, common.CacheFSWorkerContainer, j.namespace, j.Log)
 
 				// load metadata
-				// ls -al /runtime-mnt/juicefs/namespace/name/juicefs-fuse/
+				// ls -al /runtime-mnt/cachefs/namespace/name/cachefs-fuse/
 				err = fileUtils.LoadMetadataWithoutTimeout(j.getMountPoint())
 				if err != nil {
 					j.Log.Error(err, "LoadMetadata failed when syncing metadata", "name", j.name, "namespace", j.namespace)

@@ -140,12 +140,12 @@ func (j *CacheFSEngine) cleanupCache() (err error) {
 		j.Log.Info("no worker pod of runtime %s namespace %s", runtime.Name, runtime.Namespace)
 		return
 	}
-	uuid, err := j.getUUID(pods[0], common.CacheFSFuseContainer)
+	uuid, err := j.getUUID(pods[0], common.CacheFSWorkerContainer)
 	if err != nil {
 		return err
 	}
 	for _, pod := range pods {
-		fileUtils := operations.NewCacheFSFileUtils(pod.Name, common.CacheFSFuseContainer, j.namespace, j.Log)
+		fileUtils := operations.NewCacheFSFileUtils(pod.Name, common.CacheFSWorkerContainer, j.namespace, j.Log)
 
 		j.Log.Info("Remove cache in worker pod", "pod", pod.Name, "cache", cacheDirs)
 
